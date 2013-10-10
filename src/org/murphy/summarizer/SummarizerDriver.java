@@ -54,6 +54,11 @@ public class SummarizerDriver extends Configured implements Tool{
     FileOutputFormat.setOutputPath(job, new Path(args[1]));
     job.setOutputFormatClass(TextOutputFormat.class);
     
+    
+    // Set schema info
+    conf.set("schema", args[2]);
+    conf.set("groupBy", args[3]);
+    conf.set("group",args[4]);
     // Execute job and return status
     return job.waitForCompletion(true) ? 0 : 1;
   }
